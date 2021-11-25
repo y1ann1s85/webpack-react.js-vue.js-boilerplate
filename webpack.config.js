@@ -7,7 +7,8 @@ const stylesHandler = MiniCssExtractPlugin.loader;
 
 const config = {
     entry: [
-        './resources/js/main.js',
+        './resources/js/vue/main.js',
+        './resources/js/react/main.js',
     ],
     output: {
         filename: './builds/chunks/js/[name].js?id=[chunkhash]',
@@ -33,9 +34,10 @@ const config = {
         },
     },
     resolve: {
-    alias: {
-        vue: 'vue/dist/vue.js'
-    },
+        alias: {
+            vue: 'vue/dist/vue.js'
+        },
+        extensions: [".js", ".jsx"]
     },
     devServer: {
         open: true,
@@ -43,9 +45,12 @@ const config = {
         watchFiles: [
             'webpack.config.js',
             'resources/views/*.html', 
-            'resources/js/*.js',
-            'resources/js/components/**/*.js',
-            'resources/js/components/**/*.vue',
+            'resources/js/vue/*.js',
+            'resources/js/vue/components/**/*.js',
+            'resources/js/vue/components/**/*.vue',
+            'resources/js/react/*.js',
+            'resources/js/react/components/**/*.js',
+            'resources/js/react/components/**/*.vue',
             'resources/sass/*.scss',
             'resources/css/*.css'
         ],

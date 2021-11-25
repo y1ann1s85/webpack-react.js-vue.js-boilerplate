@@ -8,7 +8,7 @@
 
     export default {
 
-        name: "helloFromVue",
+        name: "home",
 
         components: {
         },
