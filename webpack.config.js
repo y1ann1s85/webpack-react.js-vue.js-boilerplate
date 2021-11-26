@@ -51,8 +51,8 @@ const config = {
             'resources/js/react/*.js',
             'resources/js/react/components/**/*.js',
             'resources/js/react/components/**/*.vue',
-            'resources/sass/*.scss',
-            'resources/css/*.css'
+            'resources/styles/sass/*.scss',
+            'resources/styles/css/*.css'
         ],
     },
     plugins: [
@@ -73,6 +73,11 @@ const config = {
                 test: /\.(js|jsx)$/i,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
+            },
+            {
+                test: /\.vue$/,
+                exclude: /node_modules/,
+                loader: 'vue-loader'
             },
             {
                 test: /\.s[ac]ss$/i,
@@ -118,11 +123,6 @@ const config = {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
                 exclude: /node_modules/,
                 type: 'asset',
-            },
-            {
-                test: /\.vue$/,
-                exclude: /node_modules/,
-                loader: 'vue-loader'
             },
         ],
     },
