@@ -3,15 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const isProduction = process.env.NODE_ENV == 'production';
-const stylesHandler = MiniCssExtractPlugin.loader;
 
 const config = {
     entry: [
-        './resources/js/vue/main.js',
-        './resources/js/react/main.js',
+        './resources/js/main.js',
     ],
     output: {
-        filename: './builds/chunks/js/[name].js?id=[chunkhash]',
+        filename: './chunks/js/[name].js?id=[chunkhash]',
     },
     optimization: {
         runtimeChunk: 'single',
@@ -62,7 +60,8 @@ const config = {
             favicon: ''
         }),
         new MiniCssExtractPlugin({
-            filename: isProduction ? "[name].css?id=[contenthash]" : "[name].css"
+            linkType: "text/css",
+            filename: isProduction ? "./resources/styles/css/[name].css?id=[contenthash]" : "./resources/styles/css/[name].css"
         }),
         new VueLoaderPlugin()
     ],
@@ -83,7 +82,8 @@ const config = {
                 test: /\.s[ac]ss$/i,
                 exclude: /node_modules/,
                 use: [
-                    stylesHandler, 
+                    // process.env.NODE_ENV !== "production"
+                    // ? "style-loader" : 
                     MiniCssExtractPlugin.loader,
                     {
                         loader: "css-loader",
@@ -117,7 +117,14 @@ const config = {
             {
                 test: /\.css$/i,
                 exclude: /node_modules/,
-                use: [stylesHandler, 'css-loader', 'postcss-loader', 'vue-style-loader'],
+                use: [
+                    // process.env.NODE_ENV !== "production"
+                    // ? "style-loader" : 
+                    MiniCssExtractPlugin.loader,
+                    'css-loader', 
+                    'postcss-loader', 
+                    'vue-style-loader'
+                ],
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
