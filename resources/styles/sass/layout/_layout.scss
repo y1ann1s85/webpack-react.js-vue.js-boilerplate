@@ -13,7 +13,8 @@ body {
     font-size: fonts("size");
     font-weight: fonts("weight");
     line-height: fonts("line-height");
-    background: grey;
+    background: color('white');
+    color: color('black');
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -29,7 +30,7 @@ h4,
 h5,
 h6 {
     margin: 0;
-    font-size: unset;
+    font-size: 2em;
     font-weight: unset;
 }
 
@@ -37,7 +38,11 @@ a {
     text-decoration: none;
     outline: 0 none;
     border: none;
+    color: unset;
+    background: unset;
     &:hover {
         text-decoration: none;
+        color: unset;
+        background: unset;
     }
 }

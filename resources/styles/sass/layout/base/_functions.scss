@@ -1,12 +1,21 @@
 @use "sass:math";
 
 // Returns color from $colors map variable
-// e.g. color('black')
-@function color($color) {
-    @if map-has-key($colors, $color) {
-        @return map-get($colors, $color);
+// e.g. color('black', 'darker')
+// @function color($color) {
+//     @if map-has-key($colors, $color) {
+//         @return map-get($colors, $color);
+//     }
+//     @return false;
+// }
+
+@function color($name: false, $variant: $default-color-variant) {
+    $color: null;
+    $color-name: map-get($colors, $name);
+    @if $color-name {
+        $color: map-get($color-name, $variant);
     }
-    @return false;
+    @return $color;
 }
 
 // Returns fonts attributes from $fonts map variable

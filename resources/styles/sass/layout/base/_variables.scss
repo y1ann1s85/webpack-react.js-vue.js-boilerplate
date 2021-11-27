@@ -2,7 +2,60 @@ $fonts: (
     "type": "Red Hat Display",
     "size": 14px,
     "weight": 400,
-    "line-height": normal
+    "line-height": normal,
+);
+
+$default-color-variant: 'default' !default;
+
+$colors: (
+    "white": (
+        "default": #F5F7FA,
+        "darker": #E6E9ED,
+    ),
+    "black": (
+        "default": #434A54,
+        "darker": #383838,
+    ),
+    "grey": (
+        "default": #CCD1D9,
+        "darker": #AAB2BD,
+    ),
+    "red": (
+        "default": #ED5565,
+        "darker": #DA4453,
+    ),
+    "yellow": (
+        "default": #FFCE54,
+        "darker": #FCBB42,
+    ),
+    "orange": (
+        "default": #FC6E51,
+        "darker": #E9573F,
+    ),
+    "green": (
+        "default": #A0D468,
+        "darker": #8CC152,
+    ),
+    "mint": (
+        "default": #48CFAD,
+        "darker": #37BC9B,
+    ),
+    "blue": (
+        "default": #5D9CEC,
+        "darker": #4A89DC,
+    ),
+    "aqua": (
+        "default": #4FC1E9,
+        "darker": #3BAFDA,
+    ),
+    "purple": (
+        "default": #AC92EC,
+        "darker": #967ADC,
+    ),
+    "pink": (
+        "default": #EC87C0,
+        "darker": #D770AD,
+    ),
 );
 
 $breakpoints: (
@@ -14,5 +67,5 @@ $breakpoints: (
     "lap-sm": 1366px,
     "lap-md": 1440px,
     "lap-lg": 1680px,
-    "des": 1920px
+    "des": 1920px,
 );
