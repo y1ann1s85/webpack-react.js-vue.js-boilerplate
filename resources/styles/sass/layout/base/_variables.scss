@@ -1,0 +1,18 @@
+$fonts: (
+    "type": "Red Hat Display",
+    "size": 14px,
+    "weight": 400,
+    "line-height": normal
+);
+
+$breakpoints: (
+    "mob-sm": 320px,
+    "mob-md": 414px,
+    "mob-lg": 667px,
+    "tab-sm": 992px,
+    "tab-lg": 1024px,
+    "lap-sm": 1366px,
+    "lap-md": 1440px,
+    "lap-lg": 1680px,
+    "des": 1920px
+);

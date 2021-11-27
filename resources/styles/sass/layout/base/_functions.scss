@@ -1,0 +1,46 @@
+@use "sass:math";
+
+// Returns color from $colors map variable
+// e.g. color('black')
+@function color($color) {
+    @if map-has-key($colors, $color) {
+        @return map-get($colors, $color);
+    }
+    @return false;
+}
+
+// Returns fonts attributes from $fonts map variable
+@function fonts($font) {
+    @if map-has-key($fonts, $font) {
+        @return map-get($fonts, $font);
+    }
+    @return false;
+}
+
+// Returns column width calculated by $columns variable
+// e.g. column(6)
+@function column($column) {
+    $column-width: math.div(100 * $column, $columns);
+    @return percentage($column-width * 0.01);
+}
+
+// Converts given value from number to px
+// e.g. number-to-px(15)
+@function number-to-px($number) {
+    @return $number * 1px;
+}
+
+// Converts pixels to vw
+@function get-vw($font) {
+    $vw-context: $vw-viewport * 0.01 * 1px;
+    @return math.div($font, $vw-context) * 1vw;
+    @return $font;
+}
+
+// Returns max width calculated by $max-widths variable
+// e.g. column(1)
+@function max-width($width) {
+    @if map-has-key($max-widths, $width) {
+        @return map-get($max-widths, $width);
+    }
+}

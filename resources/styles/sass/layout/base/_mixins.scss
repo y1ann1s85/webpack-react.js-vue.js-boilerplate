@@ -1,0 +1,71 @@
+// Returns font-style from given values.
+// e.g. @include font-style(16, 500, 2);
+@mixin font-style($size: false, $weight: false, $line-height: false) {
+    @if $size {
+        font-size: #{$size}px;
+    }
+    @if $weight {
+        font-weight: $weight;
+    }
+    @if $line-height {
+        line-height: $line-height;
+    }
+}
+
+// Returns breakpoint from $breakpoints map variable.
+// e.g. @include breakpoint('mob-md', 'max') {}
+@mixin breakpoint($breakpoint, $max_min: false) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $breakpoint_value: map-get($breakpoints, $breakpoint);
+        @if $max_min == "max" {
+            $breakpoint_value: $breakpoint_value - 0.02;
+        }
+        @media all and (#{$max_min}-width: number-to-px($breakpoint_value)) {
+            @content;
+        }
+    }
+}
+
+// Returns Min and Max breakpoints by given variables.
+// e.g. @include breakpoint-minmax('mob-md', 'mob-sm') {}
+@mixin breakpoint-minmax($breakpoint_upper, $breakpoint_lower) {
+    @include breakpoint($breakpoint_upper, "max") {
+        @include breakpoint($breakpoint_lower, "min") {
+            @content;
+        }
+    }
+}
+
+// Returns custom breakpoint by given pixels' number.
+// e.g. @include custom-breakpoint(1450,'max') {}
+@mixin custom-breakpoint($size, $max_min: false) {
+    $breakpoint_value: $size;
+    @if $max_min == "max" {
+        $breakpoint_value: $breakpoint_value - 0.02;
+    }
+    @media all and (#{$max_min}-width: number-to-px($breakpoint_value)) {
+        @content;
+    }
+}
+
+// Returns Min and Max breakpoints by given pixels' numbers.
+// e.g. @include custom-breakpoint-minmax(1920, 640) {}
+@mixin custom-breakpoint-minmax($breakpoint_upper, $breakpoint_lower) {
+    @include custom-breakpoint($breakpoint_upper, "max") {
+        @include custom-breakpoint($breakpoint_lower, "min") {
+            @content;
+        }
+    }
+}
+
+// Reduce Element's Brightness. 
+// e.g. @include reduce-brightness(0.5)
+@mixin reduce-brightness($value) {
+    filter: brightness($value);
+    -webkit-transition: 100ms -webkit-filter linear;
+    -moz-transition: 100ms -moz-filter linear;
+    -moz-transition: 100ms filter linear;
+    -ms-transition: 100ms -ms-filter linear;
+    -o-transition: 100ms -o-filter linear;
+    transition: 100ms filter linear, 100ms -webkit-filter linear;                
+}

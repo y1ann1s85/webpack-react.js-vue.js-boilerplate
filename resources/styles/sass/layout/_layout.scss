@@ -1,0 +1,43 @@
+@import "./base/variables";
+@import "./base/grid_system";
+@import "./base/functions";
+@import "./base/mixins";
+@import "./base/fonts";
+
+* {
+    outline: none !important;
+}
+
+body {
+    font-family: fonts("type"), sans-serif;
+    font-size: fonts("size");
+    font-weight: fonts("weight");
+    line-height: fonts("line-height");
+    background: grey;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.wrapper {
+    @include make-container(1em);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-size: unset;
+    font-weight: unset;
+}
+
+a {
+    text-decoration: none;
+    outline: 0 none;
+    border: none;
+    &:hover {
+        text-decoration: none;
+    }
+}
