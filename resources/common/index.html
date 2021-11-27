@@ -5,14 +5,27 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=5.0">
-        <title>webpack-react.js-vue.js-boilerplate</title>
+        <title>webpack-react.js-vue.js-scss-boilerplate</title>
     </head>
 
     <body>
         <div class="wrapper">
-            <h1>Hello from webpack-react.js-vue.js-boilerplate!</h1>
-            <div id="home__vue"></div>
-            <div id="home__react"></div>    
+
+            <div class="welcome-screen">
+                <h1>Webpack, React.js, Vue.js, SASS boilerplate</h1>
+                <button id="go-vue">
+                    Go with Vue.js
+                </button>
+                <button id="go-react">
+                    Go with React.js
+                </button>
+            </div>
+
+            <div id="vue">
+                <home></home>
+            </div>
+            <div id="react"></div>        
+
         </div>
     </body>
 

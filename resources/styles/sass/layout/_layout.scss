@@ -46,3 +46,22 @@ a {
         background: unset;
     }
 }
+
+button {
+    color: inherit;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: unset;
+    margin: unset;
+    padding: unset;
+    border-width: unset;
+    border-style: unset;
+    border-color: unset;
+    max-width: 100%;
+    &:hover {
+        @include reduce-brightness(0.95);
+    }
+}
