@@ -13,6 +13,11 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    max-width: 700px;
+    &.hide {
+        display: none;
+        transition: display 400ms ease;
+    }
 
     h1 {
         margin-bottom: 100px;
@@ -24,7 +29,13 @@
     button {
         flex-basis: 45%;
         background: color('white', 'darker');
+        @include font-style(16);
         border-radius: 5px;
-        padding: 20px 30px;
+        padding: 30px 0;
+        max-width: 300px;
+        box-shadow: 1.5px 1.5px 5px -1.5px color('black');
+        @include breakpoint('mob-lg', 'max') {
+            flex-basis: 100%;
+        }
     }
 }

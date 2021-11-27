@@ -3,6 +3,6 @@ import Vue from 'vue';
 new Vue({
     el: '#vue',
     components: {
-        'main': () => import('./components/main.vue' /* webpackChunkName: "main-vue" */)
+        'vue-main': () => import('./components/vue-main.vue' /* webpackChunkName: "vue-main" */)
     }
 });
