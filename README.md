@@ -1,1 +1,1 @@
-# WIP
+# Webpack - React.js - Vue.js - SASS starter kit (WIP)
