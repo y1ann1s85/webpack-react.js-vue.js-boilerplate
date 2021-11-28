@@ -81,7 +81,7 @@ const config = {
             // https://github.com/jantimon/html-webpack-plugin#options
             template: 'resources/common/index.html',
             inject: 'body',
-            favicon: ''
+            favicon: './resources/assets/images/favicon.png'
         }),
         // https://webpack.js.org/plugins/mini-css-extract-plugin/
         new MiniCssExtractPlugin({
