@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 
 const routes = [
     {
-        path: "/vue",
+        path: "/",
         name: "home",
         component: () => import('./components/home.vue' /* webpackChunkName: "vue-home" */)
     },
@@ -16,6 +16,12 @@ const router = new VueRouter({
     routes,
     mode: "history"
 });
+
+/** Ignore VueRouter redirect error **/
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch((error) => {});
+};
 
 new Vue({
     el: '#vue',

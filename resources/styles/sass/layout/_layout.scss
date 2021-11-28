@@ -41,11 +41,7 @@ body {
         }
         &.makeAbsolute {
             position: absolute;
-            // top: unset;
-            // left: unset;
-            // right: unset;
-            // bottom: unset;          
-            // z-index: unset;  
+            transform: translateY(0);
         }
         @keyframes revealOffcanvasFromBottom {
             from {
