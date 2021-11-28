@@ -1,17 +1,14 @@
 // Generate semantic grid columns with these mixins.
 @use "sass:math";
 
-$grid-gutter-width: 1.5rem !default;
-$container-padding-x: $grid-gutter-width * 0.5 !default;
+$grid-gutter-width: 1rem !default;
 $container-max-width: 1340px !default;
 $variable-prefix: bs- !default;
 $grid-columns: 12 !default;
 
-@mixin make-container($gutter: $container-padding-x, $max_width: $container-max-width) {
+@mixin make-container($max_width: $container-max-width) {
     width: 100%;
     max-width: $max_width;
-    padding-right: var(--#{$variable-prefix}gutter-x, #{$gutter});
-    padding-left: var(--#{$variable-prefix}gutter-x, #{$gutter});
     margin-right: auto;
     margin-left: auto;
 }

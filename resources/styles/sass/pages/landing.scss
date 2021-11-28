@@ -10,6 +10,21 @@
     align-items: center;
     flex-wrap: wrap;
     max-width: 700px;
+    &.loading {
+        opacity: 0.25;
+    }
+    &.goOffCanvas {
+        animation: hideWelcomeToTop 2s;
+        top: -50%;
+    }
+    @keyframes hideWelcomeToTop {
+        from {
+            top: 50%;
+        }
+        to {
+            top: -50%;
+        }
+    }    
     &.hide {
         display: none;
         transition: display 400ms ease;
@@ -32,10 +47,15 @@
         box-shadow: 1.5px 1.5px 5px -1.5px color('black');
         @include breakpoint('mob-lg', 'max') {
             flex-basis: 100%;
-            &:nth-child(2) {
+            &#go-vue {
                 margin-bottom: 20px;
             }    
         }
     }
+}
 
+.loader {
+    width: 100px;
+    height: 100px;
+    fill: color('black', 'darker');
 }

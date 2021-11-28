@@ -13,14 +13,80 @@ body {
     font-size: fonts("size");
     font-weight: fonts("weight");
     line-height: fonts("line-height");
-    background: color('white');
-    color: color('black');
+    background: color("white");
+    color: color("black");
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
-.wrapper {
-    @include make-container(1em);
+.container {
+    @include make-container();
+}
+
+.offcanvas {
+    background: color("white");
+    color: color("black");
+    &.vue,
+    &.react {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: translateY(100%);
+        &.reveal {
+            animation: revealOffcanvasFromBottom 2s;
+            transform: translateY(0);
+            z-index: 10;
+        }
+        &.makeAbsolute {
+            position: absolute;
+            // top: unset;
+            // left: unset;
+            // right: unset;
+            // bottom: unset;          
+            // z-index: unset;  
+        }
+        @keyframes revealOffcanvasFromBottom {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }        
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    z-index: -1;
+    &.reveal {
+        opacity: 1;
+        transition: opacity 400ms ease;
+        z-index: 0;
+    }
+    &.goOffCanvas {
+        animation: hideOverlayToTop 2s;
+        transform: translateY(-100%);
+        @keyframes hideOverlayToTop {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-100%);
+            }
+        }        
+    }
 }
 
 h1,

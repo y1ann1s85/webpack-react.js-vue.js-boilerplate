@@ -1,7 +1,6 @@
 <template>
-    <div>
-        Hello from vue!
-    </div>
+    <router-view
+    ></router-view>
 </template>
 
 <script>
@@ -20,6 +19,10 @@
             return {
             };
         },
+
+        mounted() {
+            this.$router.push({ name: 'home' })        
+        }
 
     };
 
