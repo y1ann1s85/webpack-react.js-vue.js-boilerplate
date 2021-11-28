@@ -1,9 +1,5 @@
 @import "../layout/layout";
 
-#vue, #react {
-    display: none;
-}
-
 .welcome-screen {
     position: absolute;
     top: 50%;
@@ -36,6 +32,10 @@
         box-shadow: 1.5px 1.5px 5px -1.5px color('black');
         @include breakpoint('mob-lg', 'max') {
             flex-basis: 100%;
+            &:nth-child(2) {
+                margin-bottom: 20px;
+            }    
         }
     }
+
 }
