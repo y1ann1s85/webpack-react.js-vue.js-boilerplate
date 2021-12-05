@@ -11,6 +11,7 @@ ReactDOM.render(
             <ReactMain/>
         </Router>
     </React.StrictMode>,
+    
     document.getElementById('react')
 
 );

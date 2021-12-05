@@ -5,7 +5,7 @@ const RouteA = () => {
 
     useEffect(() => {
         useSetSessionData('/a.html', window.location.href)
-    })
+    }, [])
 
     return (
 

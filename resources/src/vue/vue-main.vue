@@ -48,7 +48,8 @@
         },
 
         mounted() {
-            // If the component mounted for the first time check the sessionData and redirect if necessary
+            // If the component mounted for the first time check the sessionData 
+            // and the user comes from a refresh redirect using the history value on sessionData
             if (this.firstLoad) {
                 if (sessionStorage.getItem('sessionData')) {
                     try {

@@ -41,20 +41,23 @@ if (!sessionStorage.getItem('sessionData')) {
     });
 }
 
+// Trigger Vue.js || React.js (refresh)
 if (sessionStorage.getItem('sessionData')) {
     try {
+        // If the user has selected a framework before refresh
+        // check the session data, to load the right framework
         let data = JSON.parse(sessionStorage.getItem('sessionData'));
         frameworks
         .filter(framework => framework.type === data.used)
-        .forEach(filtered => { 
-            import(`${filtered.script}`)
+        .map(selectedFramework => { 
+            import(`${selectedFramework.script}`)
+            // Hide main wrapper
+            document.querySelector('.welcome-screen').classList.add('goOffCanvas');
+            // Make the vue.js || react.js wrapper absolute
+            document.querySelector(`.offcanvas.${selectedFramework.type}`).classList.add('makeAbsolute');
+            // Hide welcome element
+            document.querySelector('.welcome-screen').classList.add('hide');
         })
-        // Hide main wrapper
-        document.querySelector('.welcome-screen').classList.add('goOffCanvas');
-        // Make the vue.js || react.js wrapper absolute
-        document.querySelector(`.offcanvas.${frameworks[0].type}`).classList.add('makeAbsolute');
-        // Hide welcome element
-        document.querySelector('.welcome-screen').classList.add('hide');
     } catch(e) {
         sessionStorage.removeItem('sessionData');
     }

@@ -5,7 +5,7 @@ const Home = ( { setRoute } ) => {
 
     useEffect(() => {
         useSetSessionData('/', window.location.href)
-    })
+    }, [])
 
     return(
 
@@ -16,7 +16,7 @@ const Home = ( { setRoute } ) => {
                     <use xlinkHref="#react-logo"/>
                 </svg>
 
-                <h1>Vue.js + Vue Router</h1>
+                <h1>React.js + React Router</h1>
 
                 <div className="home__react--router-links">
                     <a onClick={ () => setRoute('/a.html') } className="router-link button-primary" to="/a.html">Route A</a>

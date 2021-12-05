@@ -18,23 +18,24 @@ function ReactMain() {
     };
 
     useEffect(() => {
-        // If the component mounted for the first time check the sessionData and redirect if necessary
-        // if (firstLoad) {
-        //     if (sessionStorage.getItem('sessionData')) {
-        //         try {
-        //             let data = JSON.parse(sessionStorage.getItem('sessionData'));
-        //             if (data.href === window.location.href) {
-        //                 setRoute(data.history);
-        //             };
-        //         } catch(e) {
-        //             sessionStorage.removeItem('sessionData');
-        //         };
-        //         return;
-        //     };
-        //     useSetSessionData('/', window.location.href);
-        // }
+        // If the component mounted for the first time check the sessionData 
+        // and the user comes from a refresh redirect using the history value on sessionData
+        if (firstLoad) {
+            if (sessionStorage.getItem('sessionData')) {
+                try {
+                    let data = JSON.parse(sessionStorage.getItem('sessionData'));
+                    if (data.href === window.location.href) {
+                        setRoute(data.history);
+                    };
+                } catch(e) {
+                    sessionStorage.removeItem('sessionData');
+                };
+                return;
+            };
+            useSetSessionData('/', window.location.href);
+        }
         setFirstLoad(false);
-    })
+    }, []);
     
     return (
 
