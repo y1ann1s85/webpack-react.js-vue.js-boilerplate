@@ -77,10 +77,30 @@ const config = {
     },
     plugins: [
         // https://webpack.js.org/plugins/html-webpack-plugin/
+        // https://github.com/jantimon/html-webpack-plugin#options
+        // Generate multiple HtmlWebpackPlugin configs for fake routes
         new HtmlWebpackPlugin({
-            // https://github.com/jantimon/html-webpack-plugin#options
-            template: 'resources/common/index.html',
             inject: 'body',
+            template: 'resources/common/index.html',
+            filename: 'index.html',
+            favicon: './resources/assets/images/favicon.png'
+        }),
+        new HtmlWebpackPlugin({
+            inject: 'body',
+            template: 'resources/common/index.html',
+            filename: 'a.html',
+            favicon: './resources/assets/images/favicon.png'
+        }),
+        new HtmlWebpackPlugin({
+            inject: 'body',
+            template: 'resources/common/index.html',
+            filename: 'b.html',
+            favicon: './resources/assets/images/favicon.png'
+        }),
+        new HtmlWebpackPlugin({
+            inject: 'body',
+            template: 'resources/common/index.html',
+            filename: 'c.html',
             favicon: './resources/assets/images/favicon.png'
         }),
         // https://webpack.js.org/plugins/mini-css-extract-plugin/

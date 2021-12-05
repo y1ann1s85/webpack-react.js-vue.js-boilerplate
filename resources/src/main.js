@@ -1,4 +1,4 @@
-import '../styles/sass/pages/landing.scss';
+import '../styles/sass/main.scss';
 
 let frameworks = [
     {

@@ -1,14 +1,24 @@
 <template>
     <div class="container">
         <div class="home__vue">
-            <h1>Hello from vue!</h1>
+
+            <svg class="framework-logo" width="300">
+                <use xlink:href="#vue-logo"/>
+            </svg>
+
+            <h1>Vue.js + Vue Router</h1>
+
+            <div class="home__vue--router-links">
+                <a @click.prevent="selectRoute('routeA')" class="router-link button-primary" to="/a">Route A</a>
+                <a @click.prevent="selectRoute('routeB')" class="router-link button-primary" to="/b">Route B</a>
+                <a @click.prevent="selectRoute('routeC')" class="router-link button-primary" to="/c">Route C</a>
+            </div>
+
         </div>
     </div>
 </template>
 
 <script>
-
-    import "../../../styles/sass/pages/home.scss"
 
     export default {
 
@@ -24,6 +34,12 @@
             return {
             };
         },
+
+        methods: {
+            selectRoute(route) {
+                this.$emit('setRoute', route);
+            }
+        }
 
     };
 

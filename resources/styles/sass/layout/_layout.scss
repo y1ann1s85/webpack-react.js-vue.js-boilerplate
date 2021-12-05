@@ -127,3 +127,16 @@ button {
         @include reduce-brightness(0.95);
     }
 }
+
+.button-primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: color('white', 'darker');
+    @include font-style(16);
+    border-radius: 5px;
+    padding: 30px 0;
+    max-width: 300px;
+    box-shadow: 1.5px 1.5px 5px -1.5px color('black');
+}
