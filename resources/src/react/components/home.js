@@ -3,6 +3,13 @@ import useSetSessionData from '../custom-hooks/useSetSessionData.js';
 
 const Home = ( { setRoute } ) => {
 
+    const backToSelection = () => {
+        if (sessionStorage.getItem('sessionData')) {
+            sessionStorage.removeItem('sessionData');
+        }
+        window.location.reload();
+    };
+
     useEffect(() => {
         useSetSessionData('/', window.location.href)
     }, [])
@@ -10,6 +17,16 @@ const Home = ( { setRoute } ) => {
     return(
 
         <div className="container">
+
+            <button onClick={ backToSelection } id="back-to-selection" className="button-primary">
+                <svg width="20" height="20">
+                    <use xlinkHref="#back"/>
+                </svg>           
+                <span>
+                    Back
+                </span> 
+            </button>
+
             <div className="home__react">
 
                 <svg className="framework-logo" width="300">

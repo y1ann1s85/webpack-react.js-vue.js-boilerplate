@@ -1,5 +1,18 @@
 @import "./layout/layout";
 
+#back-to-selection {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    padding: 10px;
+    background: color('blue');
+    color: color('white');
+    svg {
+        fill: color('white');
+        margin-right: 5px;
+    }
+}
+
 .home__vue, .home__react {
     position: absolute;
     top: 50%;
@@ -36,6 +49,9 @@
                     margin: 0 15px;
                 }    
             }
+            &:hover {
+                background: color('white', 'darker');
+            }        
         }
     }
 }

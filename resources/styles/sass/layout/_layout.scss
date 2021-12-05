@@ -106,10 +106,12 @@ a {
         text-decoration: none;
         color: unset;
         background: unset;
+        @include reduce-brightness(0.95);
     }
 }
 
 button {
+    font-family: fonts("type"), sans-serif;
     color: inherit;
     display: flex;
     text-align: center;
