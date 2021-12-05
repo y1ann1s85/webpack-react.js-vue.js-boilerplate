@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
+import ReactMain from "./react-main.js";
+import "../../styles/sass/rest.scss";
 
-class Hello extends React.Component {
-    render() {
-        return <div>Hello from react!</div>;
-    }
-}
-  
 ReactDOM.render(
-    <Hello/>, document.getElementById("react")
+    
+    <React.StrictMode>
+        <Router>
+            <ReactMain/>
+        </Router>
+    </React.StrictMode>,
+    document.getElementById('react')
+
 );

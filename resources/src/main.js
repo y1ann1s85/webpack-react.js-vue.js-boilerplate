@@ -44,17 +44,17 @@ if (!sessionStorage.getItem('sessionData')) {
 if (sessionStorage.getItem('sessionData')) {
     try {
         let data = JSON.parse(sessionStorage.getItem('sessionData'));
-        if (data.used === 'vue') {
-            import(
-                `${frameworks[0].script}`
-            );
-            // Hide main wrapper
-            document.querySelector('.welcome-screen').classList.add('goOffCanvas');
-            // Make the vue.js || react.js wrapper absolute
-            document.querySelector(`.offcanvas.${frameworks[0].type}`).classList.add('makeAbsolute');
-            // Hide welcome element
-            document.querySelector('.welcome-screen').classList.add('hide');
-        }
+        frameworks
+        .filter(framework => framework.type === data.used)
+        .forEach(filtered => { 
+            import(`${filtered.script}`)
+        })
+        // Hide main wrapper
+        document.querySelector('.welcome-screen').classList.add('goOffCanvas');
+        // Make the vue.js || react.js wrapper absolute
+        document.querySelector(`.offcanvas.${frameworks[0].type}`).classList.add('makeAbsolute');
+        // Hide welcome element
+        document.querySelector('.welcome-screen').classList.add('hide');
     } catch(e) {
         sessionStorage.removeItem('sessionData');
     }

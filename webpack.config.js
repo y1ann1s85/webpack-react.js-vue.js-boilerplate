@@ -4,20 +4,36 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const isProduction = process.env.NODE_ENV == 'production';
 
+// https://stackoverflow.com/questions/39798095/multiple-html-files-using-webpack
+const routes = [ 'a.html', 'b.html', 'c.html' ];
+let multipleHtmlWebpackPlugin = routes.map(route => {
+    return new HtmlWebpackPlugin({
+        inject: 'body',
+        template: 'resources/common/index.html',
+        filename: route,
+        favicon: './resources/assets/images/favicon.png'
+    });
+});
+
 const config = {
+
     // https://webpack.js.org/concepts/#entry
     entry: [
         './resources/src/main.js',
     ],
+
     // https://webpack.js.org/configuration/output/
     output: {
         filename: './chunks/src/[name].js?id=[chunkhash]',
     },
+
     optimization: {
+
         // https://webpack.js.org/configuration/optimization/#optimizationruntimechunk
         runtimeChunk: {
             name: 'runtime',
         },
+
         splitChunks: {
             // https://webpack.js.org/plugins/split-chunks-plugin/#splitchunkschunks
             chunks: 'async',
@@ -34,7 +50,7 @@ const config = {
                 defaultVendors: {
                     // https://webpack.js.org/plugins/split-chunks-plugin/#splitchunkscachegroupscachegroupreuseexistingchunk
                     reuseExistingChunk: true,
-                },          
+                },       
                 // vendor: {
                 //     test: /[\\/]node_modules[\\/]/,
                 //     name (module) {
@@ -47,7 +63,9 @@ const config = {
                 // },
             },
         },
+        
     },
+
     resolve: {
         // https://webpack.js.org/configuration/resolve/#resolvealias
         alias: {
@@ -56,6 +74,7 @@ const config = {
         // https://webpack.js.org/configuration/resolve/#resolveextensions
         extensions: [".js", ".jsx"]
     },
+
     // https://webpack.js.org/configuration/dev-server/
     devServer: {
         // https://webpack.js.org/configuration/dev-server/#devserveropen
@@ -78,7 +97,9 @@ const config = {
             'resources/styles/css/*.css'
         ],
     },
+
     plugins: [
+
         // https://webpack.js.org/plugins/html-webpack-plugin/
         // https://github.com/jantimon/html-webpack-plugin#options
         // Generate multiple HtmlWebpackPlugin configs for fake routes
@@ -88,37 +109,26 @@ const config = {
             filename: 'index.html',
             favicon: './resources/assets/images/favicon.png'
         }),
-        new HtmlWebpackPlugin({
-            inject: 'body',
-            template: 'resources/common/index.html',
-            filename: 'a.html',
-            favicon: './resources/assets/images/favicon.png'
-        }),
-        new HtmlWebpackPlugin({
-            inject: 'body',
-            template: 'resources/common/index.html',
-            filename: 'b.html',
-            favicon: './resources/assets/images/favicon.png'
-        }),
-        new HtmlWebpackPlugin({
-            inject: 'body',
-            template: 'resources/common/index.html',
-            filename: 'c.html',
-            favicon: './resources/assets/images/favicon.png'
-        }),
+
         // https://webpack.js.org/plugins/mini-css-extract-plugin/
         new MiniCssExtractPlugin({
             // https://webpack.js.org/plugins/mini-css-extract-plugin/#options
             linkType: "text/css",
             filename: isProduction ? "./resources/styles/css/[name].css?id=[contenthash]" : "./resources/styles/css/[name].css"
         }),
+
         // https://vue-loader.vuejs.org/guide/#manual-setup
         new VueLoaderPlugin()
-    ],
+        
+    // https://stackoverflow.com/questions/39798095/multiple-html-files-using-webpack
+    ].concat(multipleHtmlWebpackPlugin),
+
     // https://webpack.js.org/configuration/devtool/
     devtool: "eval",
+
     // https://webpack.js.org/configuration/module/
     module: {
+
         rules: [
             // https://webpack.js.org/loaders/
             {
@@ -189,7 +199,9 @@ const config = {
                 type: 'asset',
             },
         ],
+        
     },
+
 };
 
 module.exports = () => {
