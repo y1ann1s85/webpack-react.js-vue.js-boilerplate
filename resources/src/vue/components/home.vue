@@ -1,15 +1,6 @@
 <template>
     <div class="container">
 
-        <button @click="backToSelection" id="back-to-selection" class="button-primary">
-            <svg width="20" height="20">
-                <use xlink:href="#back"/>
-            </svg>           
-            <span>
-                Back
-            </span> 
-        </button>
-
         <div class="home__vue">
 
             <svg class="framework-logo" width="300">
@@ -50,13 +41,6 @@
             selectRoute(route) {
                 this.$emit('setRoute', route);
             },
-
-            backToSelection() {
-                if (sessionStorage.getItem('sessionData')) {
-                    sessionStorage.removeItem('sessionData');
-                }
-                window.location.reload();
-            }
 
         }
 

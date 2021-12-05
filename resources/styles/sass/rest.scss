@@ -2,14 +2,19 @@
 
 #back-to-selection {
     position: absolute;
-    left: 25px;
-    top: 25px;
+    left: 10px;
+    top: 10px;
     padding: 10px;
     background: color('blue');
     color: color('white');
+    @include font-style(14);
     svg {
         fill: color('white');
         margin-right: 5px;
+    }
+    @include breakpoint('mob-lg', 'min') {
+        left: 25px;
+        top: 25px;    
     }
 }
 
@@ -23,8 +28,7 @@
     justify-content: center;
     align-items: center;
     h1 {
-        margin-top: 50px;
-        margin-bottom: 25px;
+        margin: 25px 0;
         flex-basis: 100%;
         text-align: center;
     }

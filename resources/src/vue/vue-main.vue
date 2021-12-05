@@ -1,8 +1,23 @@
 <template>
-    <router-view
-    @setRoute="setRoute"
-    @setSessionData="setSessionData"
-    ></router-view>
+
+    <div>
+
+        <button @click="backToSelection" id="back-to-selection" class="button-primary">
+            <svg width="10" height="10">
+                <use xlink:href="#back"/>
+            </svg>           
+            <span>
+                Back
+            </span> 
+        </button>
+        
+        <router-view
+        @setRoute="setRoute"
+        @setSessionData="setSessionData"
+        ></router-view>
+        
+    </div>
+
 </template>
 
 <script>
@@ -40,6 +55,18 @@
                     href: href
                 })
                 sessionStorage.setItem('sessionData', sessionData);
+            },
+
+            // Back button functionality
+            backToSelection() {
+                if (this.$router.history.current.path !== '/') {
+                    this.$router.go(-1);
+                    return;
+                }
+                if (sessionStorage.getItem('sessionData')) {
+                    sessionStorage.removeItem('sessionData');
+                }
+                window.location.reload();
             }
 
         },
