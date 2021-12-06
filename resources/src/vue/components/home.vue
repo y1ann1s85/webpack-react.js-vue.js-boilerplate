@@ -10,9 +10,9 @@
             <h1>Vue.js + Vue Router</h1>
 
             <div class="home__vue--router-links">
-                <a @click.prevent="selectRoute('routeA')" class="router-link button-primary" to="/a.html">Route A</a>
-                <a @click.prevent="selectRoute('routeB')" class="router-link button-primary" to="/b.html">Route B</a>
-                <a @click.prevent="selectRoute('routeC')" class="router-link button-primary" to="/c.html">Route C</a>
+                <a @click.prevent="selectRoute('routeA')" class="router-link button-primary">Route A</a>
+                <a @click.prevent="selectRoute('routeB')" class="router-link button-primary">Route B</a>
+                <a @click.prevent="selectRoute('routeC')" class="router-link button-primary">Route C</a>
             </div>
 
         </div>
